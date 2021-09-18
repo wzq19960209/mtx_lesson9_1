@@ -1,0 +1,14 @@
+
+config:
+    name: "login testcase"
+    variables:
+        title: 登录成功
+        expect: 登录成功
+
+teststeps:
+-
+    name: $title
+    api: api/api_mtx_login.yml
+    validate:
+        - eq: [content.msg, $expect]
+

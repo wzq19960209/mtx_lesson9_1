@@ -1,0 +1,19 @@
+
+config:
+    name: "commentssave testsuite"
+
+
+testcases:
+-
+    name: 评论接口套件
+    testcase: testcases/commentssave_testcase.yml
+
+
+
+
+
+
+
+
+
+

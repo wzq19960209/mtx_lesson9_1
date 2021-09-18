@@ -1,0 +1,16 @@
+
+base_url: http://121.42.15.146:9090
+name: collect api
+
+request:
+    url: /mtx/admin.php?s=/order/collect.html
+    method: POST
+    headers:
+        X-Requested-With: "XMLHttpRequest"
+    data:
+        id: $order_id,
+        value: $user_id
+validate:
+    - eq: ["status_code", 200]
+
+

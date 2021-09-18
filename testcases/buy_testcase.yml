@@ -1,0 +1,21 @@
+
+config:
+    name: "login testcase"
+    variables:
+        title: 提交订单
+
+teststeps:
+-
+    name: 对登录接口发起请求
+    api: api/api_mtx_login.yml
+    validate:
+        - eq: [content.msg, 登录成功]
+
+-
+    name: 对提交订单接口发起请求
+    api: api/api_mtx_buy.yml
+    validate:
+        - eq: [content.msg, 提交成功]
+
+
+

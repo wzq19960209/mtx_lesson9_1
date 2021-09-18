@@ -1,0 +1,18 @@
+
+base_url: http://121.42.15.146:9090
+name: login api
+variables:
+#   正向用例，登陆成功的用例，为了进行接口关联
+    accounts: yaoyao
+    pwd: yaoyao
+request:
+    url: /mtx/index.php?s=/index/user/login.html
+    method: POST
+    headers:
+        X-Requested-With: "XMLHttpRequest"
+    data:
+        accounts: $accounts
+        pwd: $pwd
+validate:
+    - eq: ["status_code", 200]
+    - eq: [content.msg, $expect]

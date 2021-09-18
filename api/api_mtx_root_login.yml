@@ -1,0 +1,18 @@
+
+base_url: http://121.42.15.146:9090
+name: root login api
+variables:
+    username: shamo
+    login_pwd: 123456
+request:
+    url: /mtx/admin.php?s=/admin/login.html
+    method: POST
+    headers:
+        X-Requested-With: "XMLHttpRequest"
+    data:
+        username: $username
+        login_pwd: $login_pwd
+validate:
+    - eq: ["status_code", 200]
+    - eq: [content.msg,登录成功]
+

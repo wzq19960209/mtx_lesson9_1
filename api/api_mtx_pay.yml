@@ -1,0 +1,14 @@
+
+base_url: http://121.42.15.146:9090
+name: pay api
+variables:
+    location: $location
+request:
+#url需要从302获取location
+    url: $location
+    method: GET
+    allow_redirects: False
+validate:
+    - eq: ["status_code", 200]
+    - contains: [content,支付成功]
+

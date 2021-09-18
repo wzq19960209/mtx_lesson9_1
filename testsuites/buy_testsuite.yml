@@ -1,0 +1,19 @@
+
+config:
+    name: "buy testsuite"
+
+
+testcases:
+-
+    name: 下订单接口套件
+    testcase: testcases/buy_testcase.yml
+
+
+
+
+
+
+
+
+
+

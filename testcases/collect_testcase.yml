@@ -1,0 +1,55 @@
+
+config:
+    name: "login testcase"
+    variables:
+        title: 提交订单
+
+teststeps:
+-
+    name: 对登录接口发起请求
+    api: api/api_mtx_login.yml
+    validate:
+        - eq: [content.msg, 登录成功]
+
+-
+    name: 对提交订单接口发起请求
+    api: api/api_mtx_buy.yml
+    extract:
+        - order_id: content.data.order.id
+        - user_id: content.data.order.user_id
+        - jump_url: content.data.jump_url
+    validate:
+        - eq: [content.msg, 提交成功]
+-
+    name: 对302接口发起请求
+    api: api/api_mtx_302.yml
+    extract:
+    #headers指代的是响应头，响应头信息都封装在headers种
+        - location: headers.Location
+
+-
+    name: 对提交订单接口发起请求
+    api: api/api_mtx_pay.yml
+    validate:
+        - contains: [content,支付成功]
+
+-
+    name: 对管理员登录接口发起请求
+    api: api/api_mtx_root_login.yml
+    validate:
+        - eq: ["status_code", 200]
+
+-
+    name: 对发货接口发起请求
+    api: api/api_mtx_delivery.yml
+    validate:
+        - eq: ["status_code", 200]
+        - eq: [content.msg,发货成功]
+
+
+-
+    name: 对收货接口发起请求
+    api: api/api_mtx_collect.yml
+    validate:
+        - eq: ["status_code", 200]
+        - eq: [content.msg,收货成功]

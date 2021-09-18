@@ -1,0 +1,33 @@
+
+config:
+    name: "login testcase"
+    variables:
+        title: 支付页面
+
+teststeps:
+-
+    name: 对登录接口发起请求
+    api: api/api_mtx_login.yml
+    validate:
+        - eq: [content.msg, 登录成功]
+
+-
+    name: 对提交订单接口发起请求
+    api: api/api_mtx_buy.yml
+    extract:
+        - jump_url: content.data.jump_url
+    validate:
+        - eq: [content.msg, 提交成功]
+
+-
+    name: 对302接口发起请求
+    api: api/api_mtx_302.yml
+    extract:
+    #headers指代的是响应头，响应头信息都封装在headers种
+        - location: headers.Location
+
+-
+    name: 对提交订单接口发起请求
+    api: api/api_mtx_pay.yml
+    validate:
+        - contains: [content,支付成功]

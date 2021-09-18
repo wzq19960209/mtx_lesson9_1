@@ -1,0 +1,19 @@
+
+config:
+    name: "buy testsuite"
+
+
+testcases:
+-
+    name: 支付接口套件
+    testcase: testcases/pay_testcase.yml
+
+
+
+
+
+
+
+
+
+

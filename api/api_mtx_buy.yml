@@ -1,0 +1,20 @@
+
+base_url: http://121.42.15.146:9090
+name: 提交订单
+#variables:
+request:
+    url: /mtx/index.php?s=/index/buy/add.html
+    method: POST
+    headers:
+        X-Requested-With: "XMLHttpRequest"
+
+    data:
+        goods_id: 1
+        stock: 2
+        buy_type: goods
+        address_id: 600
+        payment_id: 1
+        spec: ""
+validate:
+    - eq: ["status_code", 200]
+    - eq: [content.msg,提交成功]

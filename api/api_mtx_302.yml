@@ -1,0 +1,12 @@
+
+base_url: http://121.42.15.146:9090
+name: 302 api
+#variables:
+request:
+#url需要从下订单接口获取jump_url
+    url: $jump_url
+    method: GET
+    allow_redirects: False
+validate:
+    - eq: ["status_code", 302]
+
